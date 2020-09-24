@@ -1,24 +1,30 @@
-const userName = 'Charlie';
+class Department {
+  private employees: string[] = [];
 
-// const add = (n1: number, n2: number = 13) => n1 + n1;
+  constructor(private n: string, private readonly id: number) {}
 
-// console.log(add(5, 78));
+  describe(this: Department) {
+    return `Department: ${this.n}`;
+  }
 
-const hobbies = ['Sports', 'CooKing'];
-const activeHobbies = ['Hiking'];
+  addEmployee(employee: string) {
+    this.employees.push(employee);
+  }
 
-activeHobbies.push(...hobbies);
-const person = {
-  name: 'charlie',
-  age: 30,
-};
-const copiedPerson = { ...person };
+  changeDepartmentName(n: string) {
+    this.n = n;
+    return this.n;
+  }
 
-const add = (...numbers: number[]) => {
-  return numbers.reduce((acc, curr) => {
-    return (acc += curr);
-  }, 0);
-};
+  getEmployess() {
+    return this.employees;
+  }
+  getDepartmentID() {
+    return this.id;
+  }
+}
 
-console.log(add(1, 23, 4, 2234, 52, 23, 3));
-const [sports, cooking] = hobbies;
+const store = new Department('Charlie', 8);
+store.addEmployee('David');
+
+console.log(store.getDepartmentID());
