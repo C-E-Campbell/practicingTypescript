@@ -27,4 +27,4 @@ class Department {
 const store = new Department('Charlie', 8);
 store.addEmployee('David');
 
-console.log(store.getDepartmentID());
+console.log(store.getEmployess());
