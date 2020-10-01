@@ -1,10 +1,10 @@
 class Department {
   private employees: string[] = [];
 
-  constructor(private n: string, private readonly id: number) {}
+  constructor(private name: string, private readonly id: number) {}
 
   describe(this: Department) {
-    return `Department: ${this.n}`;
+    return `Department: ${this.name}`;
   }
 
   addEmployee(employee: string) {
@@ -12,8 +12,8 @@ class Department {
   }
 
   changeDepartmentName(n: string) {
-    this.n = n;
-    return this.n;
+    this.name = n;
+    return this.name;
   }
 
   getEmployess() {
@@ -24,7 +24,25 @@ class Department {
   }
 }
 
-const store = new Department('Charlie', 8);
+class ITDepartment extends Department {
+  admins: string[];
+  constructor(id: number, admins: string[]) {
+    super('IT', 9);
+    this.admins = admins;
+  }
+}
+
+class AccountingDepartment extends Department {
+  constructor(id: number, private reports: string[]) {
+    super('Accounting', id);
+  }
+
+  getReports() {
+    return this.reports;
+  }
+}
+
+const store = new ITDepartment(8, ['Chalrie']);
 store.addEmployee('David');
 
-console.log(store.getEmployess());
+console.log(store.getDepartmentID());
